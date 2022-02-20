@@ -14,9 +14,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return 'Visit thatepanhub.org. This domain is under testing and development.';
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+// Route::prefix('domains')->group(function() {
+    
+Route::domain('{domain}')->group(function() {
+    Route::get('/{page}', 'App\Http\Controllers\PageController@index');
+});
+// });
+
+Route::domain('{domain}.example-app.test')->group(function() {
+    Route::get('/{page}', 'App\Http\Controllers\PageController@index');
+});

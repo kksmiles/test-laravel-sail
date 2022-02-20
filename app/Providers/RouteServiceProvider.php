@@ -38,6 +38,8 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
         });
+        \Route::pattern('domain', '[a-z0-9.\-]+'); 
+        parent::boot();
     }
 
     /**
